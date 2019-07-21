@@ -1,0 +1,35 @@
+[
+  {
+    "id": "Soup",
+    "price": 65,
+    "multiBuyDiscount": {
+      "redemptionQuantity": 2,
+      "discountId": "Bread",
+      "discount": 50
+    }
+  },
+  {
+    "id": "Bread",
+    "price": 80,
+    "discount": 10
+  },
+  {
+    "id": "Milk",
+    "price": 130
+  },
+  {
+    "id": "Apples",
+    "price": 100,
+    "discount": 10
+  },
+  {
+    "id": "Jam",
+    "price": 99,
+    "discount": 5,
+    "multiBuyDiscount": {
+      "redemptionQuantity": 2,
+      "discountId": "Bread",
+      "discount": 25
+    }
+  }
+]

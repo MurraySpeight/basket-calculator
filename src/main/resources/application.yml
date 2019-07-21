@@ -1,0 +1,8 @@
+spring:
+  main:
+    banner-mode: log
+
+logging:
+  level:
+    root: warn
+
