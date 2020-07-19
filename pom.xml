@@ -9,7 +9,7 @@
     </parent>
     <groupId>digital.speight</groupId>
     <artifactId>shopping-calculator</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>${revision}${changelist}</version>
 
     <properties>
         <java.version>11</java.version>
