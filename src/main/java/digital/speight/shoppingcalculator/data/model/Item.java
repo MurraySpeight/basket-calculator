@@ -45,7 +45,7 @@ public class Item {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Item item = (Item) o;
+        var item = (Item) o;
         return id.equals(item.id);
     }
 

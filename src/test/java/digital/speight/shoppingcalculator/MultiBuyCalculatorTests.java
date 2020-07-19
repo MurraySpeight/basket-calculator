@@ -50,7 +50,7 @@ class MultiBuyCalculatorTests {
         verify(inventoryRepository).getAll();
         assertFalse(queueOfMultiBuyDiscounts.containsKey("Soup"));
         assertTrue(queueOfMultiBuyDiscounts.containsKey("Bread"));
-        Queue breadDiscountQueue = queueOfMultiBuyDiscounts.get("Bread");
+        var breadDiscountQueue = queueOfMultiBuyDiscounts.get("Bread");
         assertEquals(50, breadDiscountQueue.poll());
         assertEquals(50, breadDiscountQueue.poll());
         assertNull(breadDiscountQueue.poll());
@@ -61,7 +61,7 @@ class MultiBuyCalculatorTests {
     void multipleMultiBuysAddedWithBestFirst() {
         queueOfMultiBuyDiscounts = multiBuyCalculator.calculateQueueOfMultiBuyDiscounts(List.of(createSoupItem(), createSoupItem(), createJamItem()));
         verify(inventoryRepository).getAll();
-        Queue breadDiscountQueue = queueOfMultiBuyDiscounts.get("Bread");
+        var breadDiscountQueue = queueOfMultiBuyDiscounts.get("Bread");
         assertEquals(60, breadDiscountQueue.poll());
         assertEquals(50, breadDiscountQueue.poll());
     }

@@ -34,8 +34,8 @@ public class CheckoutCalculator {
     }
 
     private static long calculateSubtotal(List<Item> basket) {
-        long subtotal = 0L;
-        for (Item item : basket) {
+        var subtotal = 0L;
+        for (var item : basket) {
             subtotal += item.getPrice();
         }
         System.out.format("Subtotal: %s%n", PriceUtil.formatLongToGBPCurrency(subtotal));
@@ -44,8 +44,8 @@ public class CheckoutCalculator {
 
     private static Optional<Integer> largestMultiBuyDiscountAvailable(Item item, Map<String, Queue<Integer>> queueOfMultiBuyDiscounts) {
         if (queueOfMultiBuyDiscounts.containsKey(item.getId())) {
-            Queue<Integer> itemMultiBuyDiscounts = queueOfMultiBuyDiscounts.get(item.getId());
-            Integer lowestAvailableMultiBuyDiscount = itemMultiBuyDiscounts.poll();
+            var itemMultiBuyDiscounts = queueOfMultiBuyDiscounts.get(item.getId());
+            var lowestAvailableMultiBuyDiscount = itemMultiBuyDiscounts.poll();
             if (lowestAvailableMultiBuyDiscount != null) {
                 return Optional.of(lowestAvailableMultiBuyDiscount);
             }
@@ -63,7 +63,7 @@ public class CheckoutCalculator {
 
     public void calculate(List<String> basketRequest) {
         try {
-            List<Item> basket = basketManager.createBasket(basketRequest);
+            var basket = basketManager.createBasket(basketRequest);
             subtotal = calculateSubtotal(basket);
             total = calculateTotal(basket);
         } catch (InvalidItemException e) {
@@ -75,7 +75,7 @@ public class CheckoutCalculator {
         boolean discountsApplied = false;
         long total = 0L;
         Map<String, Queue<Integer>> queueOfMultiBuyDiscounts = multiBuyCalculator.calculateQueueOfMultiBuyDiscounts(basket);
-        for (Item item : basket) {
+        for (var item : basket) {
             int multiBuyDiscount = largestMultiBuyDiscountAvailable(item, queueOfMultiBuyDiscounts).orElse(0);
             int standardDiscount = item.getDiscount() != null ? item.getDiscount() : 0;
             int highestDiscount = Math.max(multiBuyDiscount, standardDiscount);

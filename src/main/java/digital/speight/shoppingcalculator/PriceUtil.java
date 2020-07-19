@@ -18,7 +18,7 @@ final class PriceUtil {
         if (currencyLong < ONE_POUND) {
             return currencyLong + "p";
         } else {
-            NumberFormat n = NumberFormat.getCurrencyInstance(Locale.UK);
+            var n = NumberFormat.getCurrencyInstance(Locale.UK);
             return n.format(currencyLong / 100.0);
         }
     }

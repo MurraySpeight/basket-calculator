@@ -9,7 +9,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Component
 public class BasketManager {
@@ -24,12 +23,12 @@ public class BasketManager {
 
     public List<Item> createBasket(List<String> basketRequest) throws InvalidItemException {
         List<Item> basketItems = new ArrayList<>();
-        for (String itemId : basketRequest) {
-            Optional<Item> item = inventoryRepository.getOne(itemId);
+        for (var itemId : basketRequest) {
+            var item = inventoryRepository.getOne(itemId);
             if (item.isPresent()) {
                 basketItems.add(item.get());
             } else {
-                String message = String.format("Item with ID '%s' does not exist in the inventory.", itemId);
+                var message = String.format("Item with ID '%s' does not exist in the inventory.", itemId);
                 log.error(message);
                 throw new InvalidItemException(message);
             }

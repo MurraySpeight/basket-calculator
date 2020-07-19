@@ -23,24 +23,24 @@ public class InventoryJsonRepository implements InventoryRepository {
 
     @Override
     public List<Item> getAll() {
-        List<Item> items = getAllItemsFromJson();
+        var items = getAllItemsFromJson();
         log.debug("All items: {}", items);
         return items;
     }
 
     @Override
     public Optional<Item> getOne(String id) {
-        List<Item> items = getAllItemsFromJson();
+        var items = getAllItemsFromJson();
         return items.stream()
                 .filter(i -> i.getId().equals(id))
                 .findFirst();
     }
 
     private List<Item> getAllItemsFromJson() {
-        ObjectMapper mapper = new ObjectMapper();
+        var mapper = new ObjectMapper();
         List<Item> items;
         try {
-            items = mapper.readValue(inventoryResource.getInputStream(), new TypeReference<List<Item>>() {
+            items = mapper.readValue(inventoryResource.getInputStream(), new TypeReference<>() {
             });
         } catch (IOException e) {
             log.error("Inventory JSON file cannot be found.", e);

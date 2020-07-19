@@ -28,7 +28,7 @@ class ITCheckoutCalculatorTests {
     @DisplayName("Simple non-discount items returning correct total and subtotal")
     @Test
     void nonDiscountItemsAddedCorrectly() throws InvalidItemException {
-        List<String> basketRequest = List.of("Milk", "Milk");
+        var basketRequest = List.of("Milk", "Milk");
         checkoutCalculator.calculate(basketRequest);
         verify(multiBuyCalculator).calculateQueueOfMultiBuyDiscounts(any());
         verify(basketManager).createBasket(any());
@@ -40,7 +40,7 @@ class ITCheckoutCalculatorTests {
             "and the last bread applies its own discount")
     @Test
     void multiBuyDiscountsAreCorrectlyApplied() throws InvalidItemException {
-        List<String> basketRequest = List.of("Jam", "Jam", "Soup", "Soup", "Bread", "Bread", "Bread");
+        var basketRequest = List.of("Jam", "Jam", "Soup", "Soup", "Bread", "Bread", "Bread");
         checkoutCalculator.calculate(basketRequest);
         verify(multiBuyCalculator).calculateQueueOfMultiBuyDiscounts(any());
         verify(basketManager).createBasket(any());

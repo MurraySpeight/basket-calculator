@@ -29,7 +29,7 @@ class BasketManagerTests {
     private BasketManager basketManager;
 
     private static Item createBreadItem() {
-        Item bread = new Item();
+        var bread = new Item();
         bread.setId("Bread");
         return bread;
     }
@@ -43,7 +43,7 @@ class BasketManagerTests {
     @Test
     void validItemReturnsInBasket() throws InvalidItemException {
         when(inventoryRepository.getOne(any())).thenReturn(Optional.of(createBreadItem()));
-        List<Item> basket = basketManager.createBasket(List.of("Bread"));
+        var basket = basketManager.createBasket(List.of("Bread"));
         verify(inventoryRepository).getOne(any());
         assertFalse(basket.isEmpty());
         assertEquals("Bread", basket.get(0).getId());
@@ -53,7 +53,7 @@ class BasketManagerTests {
     @Test
     void invalidItemThrowsInvalidItemException() {
         when(inventoryRepository.getOne(any())).thenReturn(Optional.empty());
-        Exception exception = assertThrows(InvalidItemException.class, () ->
+        var exception = assertThrows(InvalidItemException.class, () ->
                 basketManager.createBasket(List.of("Butter")));
         verify(inventoryRepository).getOne(any());
         assertEquals("Item with ID 'Butter' does not exist in the inventory.", exception.getMessage());

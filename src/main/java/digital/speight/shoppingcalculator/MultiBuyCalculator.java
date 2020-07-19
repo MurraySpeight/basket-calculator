@@ -2,7 +2,6 @@ package digital.speight.shoppingcalculator;
 
 import digital.speight.shoppingcalculator.data.InventoryRepository;
 import digital.speight.shoppingcalculator.data.model.Item;
-import digital.speight.shoppingcalculator.data.model.MultiBuyDiscount;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
@@ -19,9 +18,9 @@ public class MultiBuyCalculator {
     }
 
     public Map<String, Queue<Integer>> calculateQueueOfMultiBuyDiscounts(List<Item> itemBasket) {
-        List<Item> availableItems = inventoryRepository.getAll();
-        Set<Item> distinctItems = new HashSet<>(availableItems);
-        for (Item item : distinctItems) {
+        var availableItems = inventoryRepository.getAll();
+        var distinctItems = new HashSet<>(availableItems);
+        for (var item : distinctItems) {
             long quantityOfItemInBasket = itemBasket.stream().filter(i -> i.equals(item)).count();
             addEligibleDiscountsForItemToQueue(item, quantityOfItemInBasket);
         }
@@ -30,13 +29,13 @@ public class MultiBuyCalculator {
 
     private void addEligibleDiscountsForItemToQueue(Item item, long quantity) {
         if (item.getMultiBuyDiscount() != null) {
-            MultiBuyDiscount multiBuyDiscount = item.getMultiBuyDiscount();
+            var multiBuyDiscount = item.getMultiBuyDiscount();
             long promoTargetItemCount = quantity / multiBuyDiscount.getRedemptionQuantity();
             if (promoTargetItemCount > 0) {
                 if (!itemMultiBuyDiscounts.containsKey(multiBuyDiscount.getDiscountId())) {
                     itemMultiBuyDiscounts.put(multiBuyDiscount.getDiscountId(), new PriorityQueue<>(Collections.reverseOrder()));
                 }
-                Queue<Integer> itemDiscountQueue = itemMultiBuyDiscounts.get(multiBuyDiscount.getDiscountId());
+                var itemDiscountQueue = itemMultiBuyDiscounts.get(multiBuyDiscount.getDiscountId());
                 for (int i = 0; i < promoTargetItemCount; i++) {
                     itemDiscountQueue.add(multiBuyDiscount.getDiscount());
                 }
