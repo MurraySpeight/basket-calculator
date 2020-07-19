@@ -16,7 +16,7 @@ The application accepts a list of items in the basket and outputs the subtotal, 
 price.
 
 Input is by the command line in the form:  
-`java shopping-calculator-0.0.1-SNAPSHOT.jar -jar Soup Soup Bread Apples`
+`./shopping-calculator-LOCAL-SNAPSHOT.jar Soup Soup Bread Apples`
 
 Output appears to the console, for example:
 ```
