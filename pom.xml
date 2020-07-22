@@ -43,4 +43,12 @@
         </plugins>
     </build>
 
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub MurraySpeight Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/MurraySpeight/shopping-basket-calculator</url>
+        </repository>
+    </distributionManagement>
+
 </project>
