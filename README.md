@@ -1,6 +1,7 @@
 # Shopping Basket Calculator
 
 [![Build Status](https://dev.azure.com/murrayspeight/murrayspeight/_apis/build/status/MurraySpeight.shopping-basket-calculator-spring?branchName=master)](https://dev.azure.com/murrayspeight/murrayspeight/_build/latest?definitionId=2&branchName=master)
+[![Sonarcloud Status](https://sonarcloud.io/api/project_badges/measure?project=digital.speight:shopping-calculator&metric=alert_status)](https://sonarcloud.io/dashboard?id=digital.speight:shopping-calculator)
 
 This application prices a basket of goods and accounts for special offers.
 The goods that can be purchased, which are all priced in GBP, are:
