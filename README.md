@@ -1,5 +1,7 @@
 # Shopping Basket Calculator
 
+[![Build Status](https://dev.azure.com/murrayspeight/murrayspeight/_apis/build/status/MurraySpeight.shopping-basket-calculator-spring?branchName=master)](https://dev.azure.com/murrayspeight/murrayspeight/_build/latest?definitionId=2&branchName=master)
+
 This application prices a basket of goods and accounts for special offers.
 The goods that can be purchased, which are all priced in GBP, are:
 * Soup – 65p per tin
