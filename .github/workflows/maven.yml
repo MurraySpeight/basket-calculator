@@ -36,7 +36,7 @@ jobs:
         uses: "WyriHaximus/github-action-next-semvers@master"
         with:
           version: ${{ steps.previoustag.outputs.tag }}
-      - name: Publish to GitHub Packages Apache Maven
-        run: mvn deploy -Drevision=${{ steps.semvers.outputs.patch }} -DskipTests
-        env:
-          GITHUB_TOKEN: ${{ github.token }}
+      #- name: Publish to GitHub Packages Apache Maven
+      #  run: mvn deploy -Drevision=${{ steps.semvers.outputs.patch }} -DskipTests
+      #  env:
+      #    GITHUB_TOKEN: ${{ github.token }}
