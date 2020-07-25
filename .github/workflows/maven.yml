@@ -35,6 +35,6 @@ jobs:
         with:
           version: ${{ steps.previoustag.outputs.tag }}
       - name: Publish to GitHub Packages Apache Maven
-        run: mvn deploy -Drevision=${{ steps.semvers.outputs.patch }} -DskipTests
+        run: mvn deploy -Drevision=${{ steps.semvers.outputs.patch }} -DskipTests -Dmaven.wagon.http.pool=false
         env:
           GITHUB_TOKEN: ${{ github.token }}
